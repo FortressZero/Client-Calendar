@@ -6,6 +6,12 @@
         <attribute name="last_name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="last_name"/>
+                <constraint value="first_name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="Client" positionX="-63" positionY="-18" width="128" height="104"/>

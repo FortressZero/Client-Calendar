@@ -17,6 +17,8 @@ class DataController: ObservableObject {
                 print("Core Data failed to load: \(error.localizedDescription)")
             }
             
+            self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+            // above prevents users accidentally adding two or more clients with the exact same first and last name
         }
     }
 }

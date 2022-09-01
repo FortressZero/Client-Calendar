@@ -37,7 +37,11 @@ struct AddClientView: View {
                         newClient.email = email
                         newClient.notes = notes
                         
-                        try? moc.save()
+                        do {
+                            try moc.save()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
                         dismiss()
                     }
                 }
