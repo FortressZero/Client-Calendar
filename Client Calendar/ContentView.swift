@@ -91,7 +91,7 @@ struct ContentView: View {
                 Button {
                     
                 } label: {
-                    Text("All Events")
+                    Text("Add Event")
                         .font(.headline)
                         .foregroundColor(.red)
                         .padding()
@@ -105,7 +105,17 @@ struct ContentView: View {
                 Button {
                     
                 } label: {
-                    Text("Add Event")
+                    Text("All Events")
+                        .font(.headline)
+                        .foregroundColor(.red)
+                        .padding()
+                }
+                .buttonStyle(.bordered)
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Text("Edit Email")
                         .font(.headline)
                         .foregroundColor(.red)
                         .padding()

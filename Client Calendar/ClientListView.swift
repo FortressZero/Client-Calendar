@@ -16,6 +16,8 @@ struct ClientListView: View {
     
     @State private var showingAddClient = false
     
+    @State private var searchClient = ""
+    
     var body: some View {
         List {
             ForEach(clients) { client in
@@ -25,6 +27,7 @@ struct ClientListView: View {
                         Text(client.email ?? "No Email")
                         Text(client.notes ?? "Empty Notes")
                             .foregroundColor(.secondary)
+                        
                     }
                 } label: {
                     Text(client.last_name ?? "Unknown Name")
@@ -35,7 +38,11 @@ struct ClientListView: View {
                 }
                 .onDelete(perform: deleteClients)
             }
+            .searchable(text: $searchClient)
             .navigationTitle("Client List")
+            .onChange(of: searchClient) { newValue in
+                clients.nsPredicate = searchPredicate(searchClient: newValue)
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -48,6 +55,11 @@ struct ClientListView: View {
             .sheet(isPresented: $showingAddClient) {
                 AddClientView()
         }
+    }
+    
+    func searchPredicate(searchClient: String) -> NSPredicate? {
+        if searchClient.isEmpty {return nil}
+        return NSPredicate(format: "%K BEGINSWITH[cd] %@", #keyPath(Client.last_name), searchClient)
     }
     
     func deleteClients(at offsets: IndexSet) {
