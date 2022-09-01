@@ -25,6 +25,7 @@ struct AddClientView: View {
                     TextField("Last name", text: $last_name)
                     TextField("Phone", text: $phone)
                     TextField("Email", text: $email)
+                        .autocapitalization(.none)
                     TextField("Notes", text: $notes)
                 }
                 Section {

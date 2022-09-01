@@ -34,6 +34,8 @@ struct ContentView: View {
                 addStack
                 Spacer()
             }
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
     }
     
